@@ -14,7 +14,14 @@ NAME = so_long
 
 CC = clang-12
 FLAGS = -Wall -Werror -Wextra -g
-MLX_PATH =  minilibx-linux/
+MLX_LINUX = minilibx-linux
+MLX_FALLBACK = .minilibx
+ifeq ($(wildcard $(MLX_LINUX)),)
+	MLX_PATH = $(MLX_FALLBACK)
+else
+	MLX_PATH = $(MLX_LINUX)
+endif
+
 MLX = $(MLX_PATH)/libmlx.a
 
 SRC_FILES =	\
@@ -41,6 +48,7 @@ SRC_FILES =	\
 OBJS = $(SRC_FILES:.c=.o)
 LIBFT = libft/libft.a
 REPO = https://github.com/42paris/minilibx-linux.git
+INCLUDES = -I$(MLX_PATH) -Ilibft
 
 all: $(NAME) 
 
@@ -48,12 +56,17 @@ $(NAME):$(OBJS) $(LIBFT) $(MLX)
 	@$(CC) $(FLAGS) $(OBJS) $(LIBFT) $(MLX) -lXext -lX11 -g -o $(NAME)
 
 %.o: %.c
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 	
 $(LIBFT):
 	@$(MAKE) -C libft
 	
 $(MLX):
+	@if [ ! -d "$(MLX_PATH)" ]; then \
+		echo "Error: MiniLibX not found."; \
+		echo "Run: make mlx"; \
+		exit 1; \
+	fi
 	@make -C $(MLX_PATH)
 
 mlx:

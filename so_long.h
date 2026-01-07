@@ -14,8 +14,8 @@
 // #include "code/debug/debug.h"
 // #include "code/init/init.h"
 // #include "code/map/map.h"
-#include "minilibx-linux/mlx.h"
-#include "minilibx-linux/mlx_int.h"
+#include "mlx.h"
+#include "mlx_int.h"
 #include <sys/time.h>
 #include <unistd.h>
 
