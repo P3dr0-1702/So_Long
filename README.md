@@ -63,8 +63,10 @@ The game can be launched in **debug mode**, which relaxes some validation rules.
 
 ![Gameplay Screenshot 2](assets/screenshots/Screenshot2.png)
 
+To enter debug mode simply run it as so:
 ```bash
 ./so_long maps/custom.ber debug_mode=y 
+```
 
 In debug mode:
 
