@@ -10,15 +10,20 @@ So_Long is a **top-down, grid-based game** where the player must collect all rat
 
 ---
 
-## 🎮 How to Play
+## How to Play
 
+- Lauch the game using
+```bash
+./so_long path/to/map.ber
+```
 - Move the player using the keyboard (arrow keys or WASD).  
-- Collect all **rations** (`C`) on the map.  
-- Once all rations are collected, reach the **helipad** (`E`) to win.
+- Press <Esc> to exit the game.
+- Collect all **rations** on the map.  
+- Once all rations are collected, reach the **helipad** to win.
 
 ---
 
-## 🗺 Custom Maps (`.ber` files)
+## Custom Maps (`.ber` files)
 
 The game supports **custom maps** provided by the player.
 
@@ -54,6 +59,15 @@ A valid map must:
 - Be solvable (all collectibles and the exit must be reachable)  
 
 If any of these rules are broken, the game will refuse to start.
+
+##Map Logic
+During game initialization, the provided map data is transformed before rendering.
+
+Using a PRNG (Pseudo-Random Number Generator), the original map characters are replaced with randomly selected, predefined symbols. Each symbol corresponds to a specific wall asset located in the assets folder.
+
+This approach allows the same map layout to produce varied visual results while preserving the underlying structure and gameplay logic.
+
+To see the changes made to the map use the Debug Mode explained below.
 
 ---
 
