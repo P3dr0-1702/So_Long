@@ -40,12 +40,12 @@ Maps are simple **text files** with a `.ber` extension and follow a grid-based f
 | `C`    | Collectible (ration) |
 
 ### Example Map
-111111
-1101P1
-1101C1
-1101E1
-111111
-111111
+111111  
+1101P1  
+1101C1  
+1101E1  
+111111  
+111111  
 
 ### Map Rules (Normal Mode)
 
